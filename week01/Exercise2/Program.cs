@@ -37,7 +37,7 @@ class Program
         {
             plusminus = "+";
         }
-        else if ((grade % 10) <= 3 && letter != "F")
+        else if ((grade % 10) < 3 && letter != "F")
         {
             plusminus = "-";
         }
