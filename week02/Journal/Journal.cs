@@ -2,10 +2,15 @@ public class Journal{
     public List<Entry> _entries = new List<Entry>();
     public bool _saved = false; //variable used to check file has been saved before exiting.
 
-    public string _mostRecentFile = "";
+    public List<string> _saveFilesList = new List<string>();
     
-    public Journal()
+    public Journal() //on bootup, load in the file names that have been used in the past (Exceeds expectations)
     {
+       string[] saveFilesArray = System.IO.File.ReadAllLines("mainSysMemory.txt");
+       foreach(string file in saveFilesArray)
+        {
+            _saveFilesList.Add(file);
+        }
     }
 
     public void AddEntry()
@@ -58,8 +63,20 @@ public class Journal{
             }
         }
 
+        if (!_saveFilesList.Contains(fileName)) //if the list of save files doesn't already have it, record save file name. (Exceeds expectations)
+        {
+            _saveFilesList.Add(fileName);
+        }
+        
+        using (StreamWriter sysMemory = new StreamWriter("mainSysMemory.txt")) //save current list of used save files (Exceeds expectations)
+        {
+            foreach (string saveFile in _saveFilesList)
+            {
+                sysMemory.WriteLine($"{saveFile}");
+            }
+        }
+
         _saved = true; //okay to exit
-        _mostRecentFile = fileName; //help the user remember where they saved or loaded their journal from / to. (exceeds expectations)
     }
 
     public void LoadFromFile(string fileName)
@@ -83,7 +100,6 @@ public class Journal{
             }
 
             _saved = true; //It's fine to exit after loading, because any data is already locked in. (exceeds expectations)
-            _mostRecentFile = fileName; //help the user remember where they saved or loaded their journal from / to. (exceeds expectations)
         }
         else
         {

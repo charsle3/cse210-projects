@@ -12,7 +12,7 @@ Exceeds Expectations:
 2. Check whether the file to load exists before loading it.
 3. Upon quitting the program or loading an external save, check whether there are unsaved files and give the user the option to go back and save them.
 4. Only save a new entry if there is content.
-5. Remembers most recently used external file, to help user remember where to save or load  to / from.
+5. save used save file names to external file and load it up on startup to help user remember the file names they've used.
 */
 
 class Program
@@ -50,9 +50,14 @@ class Program
 
                     case 3:
                         Console.Write("Please input the name for the save file (no extention): ");
-                        if (myJournal._mostRecentFile != "")
+                        if (myJournal._saveFilesList[0] != "") //if there are saved file names, print out the list (Exceeds expectations)
                         {
-                            Console.WriteLine($"\n(Recently used file location: {myJournal._mostRecentFile})"); //help the user remember where they saved or loaded their journal from / to. (exceeds expectations)
+                            Console.WriteLine("\nRecently used file locations:");
+
+                            foreach (string file in myJournal._saveFilesList)
+                            {
+                                Console.WriteLine(file);
+                            }
                         }
                         string saveFileName = Console.ReadLine();
 
@@ -64,9 +69,14 @@ class Program
                     case 4:
                         
                         Console.Write("Please input the name for the load file (no extention): ");
-                        if (myJournal._mostRecentFile != "")
+                        if (myJournal._saveFilesList[0] != "") //if there are saved file names, print out the list (Exceeds expectations)
                         {
-                            Console.WriteLine($"\n(Recently used file location: {myJournal._mostRecentFile})"); //help the user remember where they saved or loaded their journal from / to. (exceeds expectations)
+                            Console.WriteLine("\nRecently used file locations:");
+
+                            foreach (string file in myJournal._saveFilesList)
+                            {
+                                Console.WriteLine(file);
+                            }
                         }
                         string loadFileName = Console.ReadLine();
 
