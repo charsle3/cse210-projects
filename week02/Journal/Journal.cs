@@ -6,10 +6,13 @@ public class Journal{
     
     public Journal() //on bootup, load in the file names that have been used in the past (Exceeds expectations)
     {
-       string[] saveFilesArray = System.IO.File.ReadAllLines("mainSysMemory.txt");
-       foreach(string file in saveFilesArray)
+        if (File.Exists("mainSysMemory.txt")) //double check that the place where we save _saveFilesList exists
         {
-            _saveFilesList.Add(file);
+            string[] saveFilesArray = System.IO.File.ReadAllLines("mainSysMemory.txt");
+            foreach(string file in saveFilesArray)
+            {
+                _saveFilesList.Add(file);
+            }
         }
     }
 
@@ -72,7 +75,7 @@ public class Journal{
         {
             foreach (string saveFile in _saveFilesList)
             {
-                sysMemory.WriteLine($"{saveFile}");
+                    sysMemory.WriteLine($"{saveFile}");
             }
         }
 

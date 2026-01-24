@@ -50,15 +50,15 @@ class Program
 
                     case 3:
                         Console.Write("Please input the name for the save file (no extention): ");
-                        if (myJournal._saveFilesList[0] != "") //if there are saved file names, print out the list (Exceeds expectations)
-                        {
-                            Console.WriteLine("\nRecently used file locations:");
-
-                            foreach (string file in myJournal._saveFilesList)
+                            if (myJournal._saveFilesList.Count > 0) //if there are saved file names, print out the list (Exceeds expectations)
                             {
-                                Console.WriteLine(file);
+                                Console.WriteLine("\nRecently used file locations:");
+
+                                foreach (string file in myJournal._saveFilesList)
+                                {
+                                    Console.WriteLine(file);
+                                }
                             }
-                        }
                         string saveFileName = Console.ReadLine();
 
                         saveFileName = saveFileName + ".txt";
@@ -69,15 +69,15 @@ class Program
                     case 4:
                         
                         Console.Write("Please input the name for the load file (no extention): ");
-                        if (myJournal._saveFilesList[0] != "") //if there are saved file names, print out the list (Exceeds expectations)
-                        {
-                            Console.WriteLine("\nRecently used file locations:");
-
-                            foreach (string file in myJournal._saveFilesList)
+                            if (myJournal._saveFilesList.Count > 0) //if there are saved file names, print out the list (Exceeds expectations)
                             {
-                                Console.WriteLine(file);
+                                Console.WriteLine("\nRecently used file locations:");
+
+                                foreach (string file in myJournal._saveFilesList)
+                                {
+                                    Console.WriteLine(file);
+                                }
                             }
-                        }
                         string loadFileName = Console.ReadLine();
 
                         loadFileName = loadFileName + ".txt";
