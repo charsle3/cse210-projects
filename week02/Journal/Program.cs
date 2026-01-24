@@ -12,7 +12,7 @@ Exceeds Expectations:
 2. Check whether the file to load exists before loading it.
 3. Upon quitting the program or loading an external save, check whether there are unsaved files and give the user the option to go back and save them.
 4. Only save a new entry if there is content.
-5. save used save file names to external file and load it up on startup to help user remember the file names they've used.
+5. save used save file names to external file and load it up on startup (if it exists) to help user remember the file names they've used.
 */
 
 class Program
