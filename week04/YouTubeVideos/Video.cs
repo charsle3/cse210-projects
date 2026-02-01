@@ -2,9 +2,9 @@ using System.Transactions;
 
 public class Video
 {
-    string _title = "";
-    string _author = "";
-    int _length = 0;
+    private string _title = "";
+    private string _author = "";
+    private int _length = 0;
     List<Comment> _comments = new List<Comment>();
 
     public Video(string title, string author, int length)
@@ -14,29 +14,29 @@ public class Video
         _length = length;
     }
 
-    public int GetNumComments()
+    public int GetNumComments() //number of comments
     {
         return _comments.Count;
     }
 
-    public void NewComment(Comment comment)
+    public void NewComment(Comment comment) //used to add comments to a video
     {
         _comments.Add(comment);
     }
 
-    public string GetDisplay()
+    public string GetDisplay() //format video details and comments together
     {
         string display;
 
-        display = $"++++++++++++++++++++++++++++\nTitle: {_title}({_length}min)\nBy: {_author}\n{GetNumComments()} comments\n\n";
+        display = $"++++++++++++++++++++++++++++\nTitle: {_title}({_length}min)\nBy: {_author}\n{GetNumComments()} comments\n\n"; //video details
 
-        foreach (Comment comment in _comments)
+        foreach (Comment comment in _comments) //stack comments on
         {
             display += comment.GetDisplay();
         }
 
         display += "\n";
 
-        return display;
+        return display; 
     }
 }

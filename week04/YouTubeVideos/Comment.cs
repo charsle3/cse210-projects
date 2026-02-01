@@ -1,7 +1,7 @@
 public class Comment
 {
-    string _name = "";
-    string _content = "";
+    private string _name = "";
+    private string _content = "";
 
     public Comment(string name, string text)
     {
@@ -9,7 +9,7 @@ public class Comment
         _content = text;
     }
 
-    public string GetDisplay()
+    public string GetDisplay() //format username and comment content together
     {
         return $"User '{_name}'\n\"{_content}\"\n";
     }
